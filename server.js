@@ -8,7 +8,13 @@ import "dotenv/config";
 const requestHandler = express();
 
 //Storing our port value from the .env file
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
+
 
 // The middleware express.json() parses incoming JSON requests and puts the parsed data in req.body
 requestHandler.use(express.json());
+
+// Starting the http server and listening for reuqests
+requestHandler.listen(port, () => {
+    console.log(`Server is listening on ${port}`);
+});
